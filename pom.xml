@@ -22,6 +22,7 @@
         <rest.assured.version>5.5.5</rest.assured.version>
         <allure.maven.plugin.version>2.15.2</allure.maven.plugin.version>
         <surfire.plugin.version>3.5.3</surfire.plugin.version>
+        <gson.version>2.13.1</gson.version>
     </properties>
 
     <dependencyManagement>
@@ -37,13 +38,18 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
         <!-- Selenide -->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>${selenide.version}</version>
         </dependency>
-
         <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -51,14 +57,12 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-
         <!-- AssertJ -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -66,35 +70,29 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- dotenv-java -->
         <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>dotenv-java</artifactId>
             <version>${dotenv.version}</version>
         </dependency>
-
         <!-- Rest Assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest.assured.version}</version>
-            <scope>test</scope>
         </dependency>
-
         <!-- Allure TestNG -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- Allure Selenide -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
         </dependency>
-
         <!-- AspectJ -->
         <dependency>
             <groupId>org.aspectj</groupId>

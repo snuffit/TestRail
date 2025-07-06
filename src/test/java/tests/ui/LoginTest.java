@@ -10,12 +10,7 @@ public class LoginTest extends BaseTest{
 
     @Test
     public void loginWithValidValue() {
-        //auth(user, password)
-        loginPage.openPage()
-                .isPageOpened()
-                .login(email, password)
-                .clickLogInButton()
-                .isPageOpened();
+        loginStep.auth(email, password);
     }
 
     @DataProvider
@@ -30,12 +25,7 @@ public class LoginTest extends BaseTest{
 
     @Test(dataProvider = "invalidLoginValue")
     public void loginWithInvalidValue(String email, String password, String errorMessage) {
-        //auth(user, password)
-        loginPage.openPage()
-                .isPageOpened()
-                .login(email, password)
-                .clickLogInButton()
-                .isPageOpened();
+        loginStep.auth(email, password);
         assertThat(loginPage.getErrorMessage())
                 .isEqualTo(errorMessage);
     }
