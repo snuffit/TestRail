@@ -17,7 +17,7 @@ import utils.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-@Listeners(TestListener.class)
+
 public class BaseTest {
 
     LoginStep loginStep;
