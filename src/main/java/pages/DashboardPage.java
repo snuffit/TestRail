@@ -15,7 +15,8 @@ public class DashboardPage extends BasePage {
             ID_SHOW_ANNOUNCEMENT_RADIOBUTTON = "show_announcement",
             ID_ENABLE_APPROVALS = "case_statuses_enabled",
             ID_ACCEPT_CREATE_PROJECT_BUTTON = "accept",
-            XPATH_PROJECT_NAME = "//*[@data-testid='testCaseContentHeaderTitle']";
+            XPATH_PROJECT_NAME = "//*[@id='content_container']//a[text()='%s']",
+            PAGE_TITLE = "Dashboard";
 
     @Override
     public DashboardPage openPage() {
@@ -25,7 +26,7 @@ public class DashboardPage extends BasePage {
 
     @Override
     public DashboardPage isPageOpened() {
-        $(byText("Dashboard")).isDisplayed();
+        $(byText(PAGE_TITLE)).isDisplayed();
         return this;
     }
 
@@ -52,7 +53,7 @@ public class DashboardPage extends BasePage {
         return this;
     }
 
-    public String getProjectName() {
-        return $x(XPATH_PROJECT_NAME).getText();
+    public boolean isProjectNameVisible(String projectName) {
+        return $x(String.format(XPATH_PROJECT_NAME, projectName)).isDisplayed();
     }
 }

@@ -2,11 +2,13 @@ package tests.ui;
 
 import dto.project.Project;
 import dto.project.SuiteMode;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Log4j2
 public class CreateProjectTest extends BaseTest {
 
     String projectName = "JustTest";
@@ -22,12 +24,13 @@ public class CreateProjectTest extends BaseTest {
                 .build();
         loginStep.auth(email, password);
         dashboardStep.createProject(project);
-        assertThat(dashboardPage.getProjectName())
-                .isEqualTo(projectName);
+        dashboardPage.openPage();
+        assertThat(dashboardPage.isProjectNameVisible(projectName))
+                .isTrue();
     }
 
     @AfterMethod
     public void deleteProjectByAPI() {
-        projectAPI.deleteProjectAPI(projectName);
+        projectAPIstep.deleteProjectAPI(projectName);
     }
 }
