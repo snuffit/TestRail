@@ -1,0 +1,29 @@
+{
+    "offset": 0,
+    "limit": 250,
+    "size": 1,
+    "_links": {
+        "next": null,
+        "prev": null
+    },
+    "projects": [
+        {
+            "id": 103,
+            "name": "JustTest",
+            "announcement": "description",
+            "show_announcement": false,
+            "is_completed": false,
+            "completed_on": null,
+            "suite_mode": 1,
+            "default_role_id": null,
+            "case_statuses_enabled": true,
+            "url": "https://pstyhaproject.testrail.io/index.php?/projects/overview/103",
+            "users": [
+                
+            ],
+            "groups": [
+                
+            ]
+        }
+    ]
+}
