@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class LoginPage extends BasePage {
 
     private final String TITLE_TEXT = "Log into Your Account",
-            URI = "auth/login/Ly03M2U2MzA1NjRiMTE0MTBiNzYxYTBmYzk4ODg0ZGFjMWFmMjg1ZjZlMjA1YTAyYWJhNDY0NjgxYWY1YmRkZTA4",
+            URI = "index.php?/auth/login/Ly03M2U2MzA1NjRiMTE0MTBiNzYxYTBmYzk4ODg0ZGFjMWFmMjg1ZjZlMjA1YTAyYWJhNDY0NjgxYWY1YmRkZTA4",
             ID_EMAIL_INPUT = "name",
             ID_PASSWORD_INPUT = "password",
             ID_LOGIN_BUTTON = "button_primary",

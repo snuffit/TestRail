@@ -13,6 +13,7 @@ import pages.LoginPage;
 import steps.api.ProjectAPIStep;
 import steps.ui.DashboardStep;
 import steps.ui.LoginStep;
+import utils.PropertyReader;
 import utils.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -25,16 +26,13 @@ public class BaseTest {
     DashboardStep dashboardStep;
     DashboardPage dashboardPage;
     ProjectAPIStep projectAPIstep;
-    Dotenv dotenv = Dotenv.load();
-    String email = System.getProperty("email", dotenv.get("EMAIL"));
-    String password = System.getProperty("password", dotenv.get("PASSWORD"));
-    String baseURL = System.getProperty("baseURL", dotenv.get("BASE_URL"));
+    String email = System.getProperty("email", PropertyReader.getProperty("email"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
+    String baseURL = System.getProperty("baseURL", PropertyReader.getProperty("baseURL"));
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true, description = "Open browser")
-    public void setup(@Optional("default") String browserFromTestNG) {
-        String browser = System.getProperty("browser",
-                !browserFromTestNG.equals("default") ? browserFromTestNG : "chrome");
+    public void setup(@Optional("chrome") String browser) {
         if(browser.equals("chrome")) {
             Configuration.browser = "chrome";
             ChromeOptions options = new ChromeOptions();
@@ -68,8 +66,7 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
     public void tearDown() {
-        if(getWebDriver() != null) {
-            getWebDriver().quit();
-        }
+        getWebDriver().quit();
+
     }
 }

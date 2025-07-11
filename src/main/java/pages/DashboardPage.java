@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class DashboardPage extends BasePage {
 
-    private final String URI = "dashboard",
+    private final String URI = "index.php?/dashboard",
             ID_ADD_PROJECT_BUTTON = "sidebar-projects-add",
             ID_PROJECT_NAME_INPUT = "name",
             ID_ANNOUNCEMENT_TEXTAREA = "announcement_display",

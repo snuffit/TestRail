@@ -3,6 +3,7 @@ package tests.ui;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,8 +16,8 @@ public class LoginTest extends BaseTest{
 
     @DataProvider
     public Object[][] invalidLoginValue() {
-        String email = Dotenv.load().get("EMAIL");
-        String password = Dotenv.load().get("PASSWORD");
+        String email = System.getProperty("email", PropertyReader.getProperty("email"));
+        String password = System.getProperty("password", PropertyReader.getProperty("password"));
         return new Object[][] {
                 {"Incorrect", password, "Email/Login or Password is incorrect. Please try again."},
                 {email, "Incorrect", "Email/Login or Password is incorrect. Please try again."}
