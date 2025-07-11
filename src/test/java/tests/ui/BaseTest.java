@@ -25,7 +25,7 @@ public class BaseTest {
     DashboardStep dashboardStep;
     DashboardPage dashboardPage;
     ProjectAPIStep projectAPIstep;
-    Dotenv dotenv = Dotenv.load();;
+    Dotenv dotenv = Dotenv.load();
     String email = System.getProperty("email", dotenv.get("EMAIL"));
     String password = System.getProperty("password", dotenv.get("PASSWORD"));
     String baseURL = System.getProperty("baseURL", dotenv.get("BASE_URL"));
@@ -68,6 +68,8 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
     public void tearDown() {
-        getWebDriver().quit();
+        if(getWebDriver() != null) {
+            getWebDriver().quit();
+        }
     }
 }
