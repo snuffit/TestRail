@@ -11,16 +11,16 @@ import static io.restassured.RestAssured.given;
 
 public class BaseApi {
 
-    static String email = Dotenv.load().get("EMAIL");
-    static String password = Dotenv.load().get("PASSWORD");
-    static final String BASE_PATH = "https://pstyhaproject.testrail.io/";
+    static String email = System.getProperty("email", Dotenv.load().get("EMAIL"));
+    static String password = System.getProperty("password", Dotenv.load().get("PASSWORD"));
+    static String baseURL = System.getProperty("baseURL", Dotenv.load().get("BASE_URL"));
 
     public static RequestSpecification getAuthenticatedSpec() {
         String auth = Base64.getEncoder().encodeToString(
                 (email + ":" + password).getBytes(StandardCharsets.UTF_8)
         );
         return new RequestSpecBuilder()
-                .setBaseUri(BASE_PATH)
+                .setBaseUri(baseURL)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Authorization", "Basic " + auth)
                 .build();
