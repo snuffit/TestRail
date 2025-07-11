@@ -1,6 +1,5 @@
 package adapters;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import utils.PropertyReader;

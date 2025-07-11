@@ -3,7 +3,7 @@ package tests.ui;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.github.cdimascio.dotenv.Dotenv;
+
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -16,9 +16,10 @@ import steps.ui.LoginStep;
 import utils.PropertyReader;
 import utils.TestListener;
 
+
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-
+@Listeners(TestListener.class)
 public class BaseTest {
 
     LoginStep loginStep;
@@ -66,7 +67,8 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
     public void tearDown() {
-        getWebDriver().quit();
-
+        if(getWebDriver() != null) {
+            getWebDriver().quit();
+        }
     }
 }

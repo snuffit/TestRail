@@ -1,6 +1,5 @@
 package tests.ui;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
