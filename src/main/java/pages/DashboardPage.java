@@ -1,11 +1,13 @@
 package pages;
 
 import dto.project.Project;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Log4j2
 public class DashboardPage extends BasePage {
 
     private final String URI = "index.php?/dashboard",
@@ -20,6 +22,7 @@ public class DashboardPage extends BasePage {
 
     @Override
     public DashboardPage openPage() {
+        log.info("Open dashboard page");
         open(URI);
         return this;
     }
@@ -27,15 +30,18 @@ public class DashboardPage extends BasePage {
     @Override
     public DashboardPage isPageOpened() {
         $(byText(PAGE_TITLE)).isDisplayed();
+        log.info("Dashboard page is opened");
         return this;
     }
 
     public DashboardPage clickAddProjectButton() {
+        log.info("Click 'Add Project' button");
         $(byId(ID_ADD_PROJECT_BUTTON)).click();
         return this;
     }
 
     public DashboardPage fillProjectFields(Project project) {
+        log.info("Fill project fields, name is '{}'", project.getName());
         $(byId(ID_PROJECT_NAME_INPUT)).setValue(project.getName());
         $(byId(ID_ANNOUNCEMENT_TEXTAREA)).setValue(project.getAnnouncement());
         if (project.isShowAnnouncement()) {
@@ -49,11 +55,13 @@ public class DashboardPage extends BasePage {
     }
 
     public DashboardPage clickAcceptButton() {
+        log.info("Click 'Accept' button");
         $(byId(ID_ACCEPT_CREATE_PROJECT_BUTTON)).click();
         return this;
     }
 
     public boolean isProjectNameVisible(String projectName) {
+        log.info("Check visibility of project's name");
         return $x(String.format(XPATH_PROJECT_NAME, projectName)).isDisplayed();
     }
 }

@@ -1,5 +1,8 @@
 package tests.ui;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
@@ -8,12 +11,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginTest extends BaseTest{
 
-    @Test
+    @Epic("Login with valid value")
+    @Feature("Login")
+    @Story("Login with valid value")
+    @Test(testName = "Login with valid value")
     public void loginWithValidValue() {
         loginStep.auth(email, password);
     }
 
-    @DataProvider
+    @DataProvider(name = "Invalid login value")
     public Object[][] invalidLoginValue() {
         String email = System.getProperty("email", PropertyReader.getProperty("email"));
         String password = System.getProperty("password", PropertyReader.getProperty("password"));
@@ -23,7 +29,10 @@ public class LoginTest extends BaseTest{
         };
     }
 
-    @Test(dataProvider = "invalidLoginValue")
+    @Epic("Login with valid value")
+    @Feature("Login")
+    @Story("Login with valid value")
+    @Test(testName = "Login with valid value", dataProvider = "Invalid login value")
     public void loginWithInvalidValue(String email, String password, String errorMessage) {
         loginStep.auth(email, password);
         assertThat(loginPage.getErrorMessage())

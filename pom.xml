@@ -22,7 +22,7 @@
         <allure.maven.plugin.version>2.15.2</allure.maven.plugin.version>
         <surfire.plugin.version>3.5.3</surfire.plugin.version>
         <log4j.version>2.24.3</log4j.version>
-        <suiteXmlFile>src/test/resources/CrossBrowserTest.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/RegressionTest.xml</suiteXmlFile>
         <jackson.version>2.12.3</jackson.version>
     </properties>
 
