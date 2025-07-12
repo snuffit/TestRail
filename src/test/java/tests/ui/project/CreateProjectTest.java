@@ -1,5 +1,6 @@
-package tests.ui;
+package tests.ui.project;
 
+import com.github.javafaker.Faker;
 import dto.project.Project;
 import dto.project.SuiteMode;
 import io.qameta.allure.Epic;
@@ -8,13 +9,14 @@ import io.qameta.allure.Story;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import tests.ui.BaseTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class CreateProjectTest extends BaseTest {
 
-    String projectName = "JustTest";
+    String projectName = new Faker().name().name();
 
     @Epic("Create project")
     @Feature("Project")
@@ -37,6 +39,6 @@ public class CreateProjectTest extends BaseTest {
 
     @AfterMethod(description = "Delete Project by API")
     public void deleteProjectByAPI() {
-        projectAPIstep.deleteProjectAPI(projectName);
+        projectAPIstep.deleteProject(projectName);
     }
 }

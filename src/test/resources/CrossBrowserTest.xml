@@ -7,23 +7,23 @@
     </listeners>
     <test name="Chrome">
         <classes>
-            <class name="tests.ui.LoginTest">
+            <class name="tests.ui.login.LoginTest">
                 <methods>
                     <include name="loginWithValidValue"/>
                 </methods>
             </class>
-            <class name="tests.ui.CreateProjectTest"/>
+            <class name="tests.ui.project.CreateProjectTest"/>
             <parameter name="browser" value="chrome"/>
         </classes>
     </test> <!-- Test -->
     <test name="FireFox">
         <classes>
-            <class name="tests.ui.LoginTest">
+            <class name="tests.ui.login.LoginTest">
                 <methods>
                     <exclude name="loginWithValidValue"/>
                 </methods>
             </class>
-            <class name="tests.ui.CreateProjectTest"/>
+            <class name="tests.ui.project.CreateProjectTest"/>
             <parameter name="browser" value="firefox"/>
         </classes>
     </test> <!-- Test -->

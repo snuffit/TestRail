@@ -7,8 +7,8 @@
     </listeners>
     <test name="Thread 1">
         <classes>
-            <class name="tests.ui.LoginTest"/>
-            <class name="tests.ui.CreateProjectTest"/>
+            <class name="tests.ui.login.LoginTest"/>
+            <class name="tests.ui.project.CreateProjectTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Thread 2">
@@ -18,8 +18,8 @@
 <!--            </run>-->
 <!--        </groups>-->
         <classes>
-            <class name="tests.ui.LoginTest"/>
-            <class name="tests.ui.CreateProjectTest"/>
+            <class name="tests.ui.login.LoginTest"/>
+            <class name="tests.ui.project.CreateProjectTest"/>
         </classes>
     </test>
 <!--    <test name="Thread 3">-->

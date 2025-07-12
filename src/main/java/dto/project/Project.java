@@ -10,8 +10,12 @@ import lombok.Data;
 public class Project {
 
     String name;
-    String announcement;
-    String suiteMode;
-    boolean isShowAnnouncement;
-    boolean isEnableApprovals;
+    @Builder.Default
+    String announcement = "null";
+    @Builder.Default
+    String suiteMode = SuiteMode.SINGLE_FOR_ALL_CASES.getSuiteMode();
+    @Builder.Default
+    boolean isShowAnnouncement = false;
+    @Builder.Default
+    boolean isEnableApprovals = false;
 }

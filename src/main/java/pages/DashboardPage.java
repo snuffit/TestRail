@@ -64,4 +64,10 @@ public class DashboardPage extends BasePage {
         log.info("Check visibility of project's name");
         return $x(String.format(XPATH_PROJECT_NAME, projectName)).isDisplayed();
     }
+
+    public ProjectPage openProject(String projectName) {
+        log.info("Open project '{}'", projectName);
+        $x(String.format(XPATH_PROJECT_NAME, projectName)).click();
+        return new ProjectPage();
+    }
 }

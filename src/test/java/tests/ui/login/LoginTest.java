@@ -1,15 +1,16 @@
-package tests.ui;
+package tests.ui.login;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.ui.BaseTest;
 import utils.PropertyReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
     @Epic("Login with valid value")
     @Feature("Login")

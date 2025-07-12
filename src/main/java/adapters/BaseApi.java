@@ -6,6 +6,7 @@ import utils.PropertyReader;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -29,6 +30,7 @@ public class BaseApi {
     public ResponseWrapper get(String endpoint) {
         return new ResponseWrapper(given()
                 .spec(getAuthenticatedSpec())
+                .when()
                 .get(endpoint)
                 .then()
                 .extract().response());
@@ -37,6 +39,18 @@ public class BaseApi {
     public ResponseWrapper post(String endpoint) {
         return new ResponseWrapper(given()
                 .spec(getAuthenticatedSpec())
+                .when()
+                .post(endpoint)
+                .then()
+                .extract().response());
+    }
+
+    public ResponseWrapper post(String endpoint, Map<String, Object> body) {
+        return new ResponseWrapper(given()
+                .spec(getAuthenticatedSpec())
+                .body(body)
+                .log().all()
+                .when()
                 .post(endpoint)
                 .then()
                 .extract().response());

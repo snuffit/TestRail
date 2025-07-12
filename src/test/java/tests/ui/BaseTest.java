@@ -16,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.*;
 import pages.DashboardPage;
 import pages.LoginPage;
+import pages.ProjectPage;
 import steps.api.ProjectAPIStep;
 import steps.ui.DashboardStep;
 import steps.ui.LoginStep;
@@ -29,15 +30,16 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @Listeners(TestListener.class)
 public class BaseTest {
 
-    LoginStep loginStep;
-    LoginPage loginPage;
-    DashboardStep dashboardStep;
-    DashboardPage dashboardPage;
-    ProjectAPIStep projectAPIstep;
-    String email = System.getProperty("email", PropertyReader.getProperty("email"));
-    String password = System.getProperty("password", PropertyReader.getProperty("password"));
-    String baseURL = System.getProperty("baseURL", PropertyReader.getProperty("baseURL"));
-    WebDriver driver;
+    protected static LoginStep loginStep;
+    protected static LoginPage loginPage;
+    protected static ProjectPage projectPage;
+    protected static DashboardStep dashboardStep;
+    protected static DashboardPage dashboardPage;
+    protected static ProjectAPIStep projectAPIstep;
+    protected static String email = System.getProperty("email", PropertyReader.getProperty("email"));
+    protected static String password = System.getProperty("password", PropertyReader.getProperty("password"));
+    protected static String baseURL = System.getProperty("baseURL", PropertyReader.getProperty("baseURL"));
+    protected static WebDriver driver;
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true, description = "Open browser")
@@ -71,6 +73,7 @@ public class BaseTest {
         );
         loginStep = new LoginStep();
         loginPage = new LoginPage();
+        projectPage = new ProjectPage();
         dashboardStep = new DashboardStep();
         dashboardPage = new DashboardPage();
         projectAPIstep = new ProjectAPIStep();
