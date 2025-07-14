@@ -17,9 +17,11 @@ import org.testng.annotations.*;
 import pages.DashboardPage;
 import pages.LoginPage;
 import pages.ProjectPage;
+import pages.TestCasePage;
 import steps.api.ProjectAPIStep;
 import steps.ui.DashboardStep;
 import steps.ui.LoginStep;
+import steps.ui.TestCaseStep;
 import utils.PropertyReader;
 import utils.TestListener;
 
@@ -33,6 +35,8 @@ public class BaseTest {
     protected static LoginStep loginStep;
     protected static LoginPage loginPage;
     protected static ProjectPage projectPage;
+    protected static TestCaseStep testCaseStep;
+    protected static TestCasePage testCasePage;
     protected static DashboardStep dashboardStep;
     protected static DashboardPage dashboardPage;
     protected static ProjectAPIStep projectAPIstep;
@@ -46,7 +50,7 @@ public class BaseTest {
     public void setup(@Optional("chrome") String browser) {
         log.info("Setting up browser: {}", browser);
         Configuration.baseUrl = baseURL;
-        Configuration.timeout = 10000;
+        Configuration.timeout = 20000;
         Configuration.clickViaJs = true;
         Configuration.browserSize = null;
         if(browser.equals("chrome")) {
@@ -77,6 +81,8 @@ public class BaseTest {
         dashboardStep = new DashboardStep();
         dashboardPage = new DashboardPage();
         projectAPIstep = new ProjectAPIStep();
+        testCaseStep = new TestCaseStep();
+        testCasePage = new TestCasePage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Close browser")

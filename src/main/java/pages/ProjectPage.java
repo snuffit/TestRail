@@ -12,7 +12,9 @@ public class ProjectPage extends BasePage{
     PROJECTS_ID_CLASS = "content-header-id",
     PROJECT_CHEVRON_CLASS = "//*[@class='project-avatar ']",
     PROJECT_SEARCH_XPATH = "//*[@class='projects_search']//a[text()='%s']",
-    PROJECT_TITLE_XPATH = "//*[@data-testid='testCaseContentHeaderTitle']";
+    PROJECT_TITLE_XPATH = "//*[@data-testid='testCaseContentHeaderTitle']",
+    ADD_TEST_CASE_BUTTON_XPATH = "//*[@data-testid='sidebarCasesAdd']",
+    TEST_CASE_TITLE_XPATH = "//span[@data-testid='sectionCaseTitle' and text()='%s']";
 
     public ProjectPage openPageByName(String projectName) {
         log.info("Open project '{}' page", projectName);
@@ -42,5 +44,10 @@ public class ProjectPage extends BasePage{
 
     public String getProjectName() {
         return $x(PROJECT_TITLE_XPATH).getText();
+    }
+
+    public TestCasePage clickAddTestCaseButton() {
+        $x(ADD_TEST_CASE_BUTTON_XPATH).click();
+        return new TestCasePage();
     }
 }
