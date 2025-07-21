@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"b1f67cb898d42c0f0e0096cd30003b27","name":"Regression Test","statistic":{"failed":0,"broken":0,"skipped":0,"passed":6,"unknown":0,"total":6}},{"uid":"8b15ba8ab146dfea55309c8fc0a62269","name":"CrossBrowser Test","statistic":{"failed":0,"broken":0,"skipped":0,"passed":5,"unknown":0,"total":5}}]}
