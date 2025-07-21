@@ -14,11 +14,16 @@ public class Input {
 
     public Input(String label) {
         this.label = label;
-        this.input = $x(String.format(inputPattern, label));
     }
 
     public void write(String text) {
         log.info("Write '{}' in Input '{}'", text, label);
-        input.setValue(text);
+        $x(String.format(inputPattern, label)).setValue(text);
+    }
+
+    public void anotherWrite(String text) {
+        log.info("Write '{}' in Input '{}'", text, label);
+        $x(String.format(
+                "//label[starts-with(normalize-space(.), '%s')]/following-sibling::input", label)).setValue(text);
     }
 }

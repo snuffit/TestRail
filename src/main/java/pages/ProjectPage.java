@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import steps.api.ProjectAPIStep;
 
@@ -14,7 +15,9 @@ public class ProjectPage extends BasePage{
     PROJECT_SEARCH_XPATH = "//*[@class='projects_search']//a[text()='%s']",
     PROJECT_TITLE_XPATH = "//*[@data-testid='testCaseContentHeaderTitle']",
     ADD_TEST_CASE_BUTTON_XPATH = "//*[@data-testid='sidebarCasesAdd']",
-    TEST_CASE_TITLE_XPATH = "//span[@data-testid='sectionCaseTitle' and text()='%s']";
+    TEST_CASE_TITLE_XPATH = "//span[@data-testid='sectionCaseTitle' and text()='%s']",
+            MILESTONES_BUTTON_XPATH = "//div[@class='sidebar-layout-content']" +
+                    "/descendant::a[starts-with(normalize-space(.), 'Milestone')]";
 
     public ProjectPage openPageByName(String projectName) {
         log.info("Open project '{}' page", projectName);
@@ -49,5 +52,12 @@ public class ProjectPage extends BasePage{
     public TestCasePage clickAddTestCaseButton() {
         $x(ADD_TEST_CASE_BUTTON_XPATH).click();
         return new TestCasePage();
+    }
+
+    @Step("Opening the 'Milestone' page for the project.")
+    public MilestonePage openMilestonesPage() {
+        log.info("Opening the 'Milestone' page for the project.");
+        $x(MILESTONES_BUTTON_XPATH).click();
+        return new MilestonePage();
     }
 }

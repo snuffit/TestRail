@@ -1,6 +1,7 @@
 package pages;
 
 import dto.test_case.TestCase;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import steps.api.ProjectAPIStep;
 import wrappers.Dropdown;
@@ -19,7 +20,10 @@ public class TestCasePage extends BasePage {
             ADD_TEST_CASE_BUTTON_XPATH = "//button[@id='accept']",
             ALL_TEST_CASES_PAGE_URI =
                     BASE_URL + "suites/view/%s&group_by=cases:section_id&group_order=asc&display_deleted_cases=0",
-            TEST_CASE_TITLE_XPATH = "//span[@data-testid='sectionCaseTitle' and text()='%s']";
+            TEST_CASE_TITLE_XPATH = "//span[@data-testid='sectionCaseTitle' and text()='%s']",
+            SUCCESS_MESSAGE_TITLE_XPATH = "//div[@data-testid='messageSuccessDivBox']",
+            TEST_CASE_TITLE = "Title",
+            TEST_CASE_PILL = "//table//tr//td//a[contains(., '%s')]";
 
 
     public TestCasePage openPageByName(String projectName) {
@@ -47,13 +51,7 @@ public class TestCasePage extends BasePage {
         new Dropdown("Template").select(testCase.getTemplate());
         new Dropdown("Type").select(testCase.getType());
         new Dropdown("Priority").select(testCase.getPriority());
-//        new Dropdown("Assigned To").select(testCase.getAssignedTo());
-//        new Dropdown("Automation Type").select(testCase.getAutomationType());
         new Input("Estimate").write(testCase.getEstimate());
-//        new Textarea("References").write(testCase.getReferences());
-//        new Textarea("Preconditions").write(testCase.getPreconditions());
-//        new Textarea("Steps").write(testCase.getSteps());
-//        new Textarea("Expected Result").write(testCase.getExpectedResult());
         return this;
     }
 
@@ -72,5 +70,26 @@ public class TestCasePage extends BasePage {
 
     public boolean isTestCaseCreated(String testCaseName) {
         return $x(String.format(TEST_CASE_TITLE_XPATH, testCaseName)).should(visible).isDisplayed();
+    }
+
+    @Step("Get title for the 'Test Case' page")
+    public String getSuccessMessage() {
+        log.info("Get title for the 'Test Case' page");
+        return $x(SUCCESS_MESSAGE_TITLE_XPATH).getText();
+    }
+
+    @Step("Editing the test case.")
+    public TestCasePage openEditTestCase(String testCase) {
+        log.info("Editing the '{}' test case.", testCase);
+        $x(String.format(TEST_CASE_PILL, testCase)).hover().click();
+        return this;
+    }
+
+    @Step("Edit title for Test Case.")
+    public TestCasePage updateTitleTestCase(String newTestName) {
+        log.info("Editing Test case");
+        new Input(TEST_CASE_TITLE).write(newTestName);
+        clickAddTestCaseButton();
+        return this;
     }
 }

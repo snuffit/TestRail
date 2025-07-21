@@ -9,27 +9,14 @@
         <classes>
             <class name="tests.ui.login.LoginTest"/>
             <class name="tests.ui.project.CreateProjectTest"/>
+            <class name="tests.ui.test_case.CreateTestCaseTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Thread 2">
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="smoke"/>-->
-<!--            </run>-->
-<!--        </groups>-->
         <classes>
+            <class name="tests.ui.project.SwitchProjectTest"/>
             <class name="tests.ui.login.LoginTest"/>
             <class name="tests.ui.project.CreateProjectTest"/>
         </classes>
     </test>
-<!--    <test name="Thread 3">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="regression"/>-->
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--            <class name="tests.TaxTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>

@@ -14,10 +14,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.*;
-import pages.DashboardPage;
-import pages.LoginPage;
-import pages.ProjectPage;
-import pages.TestCasePage;
+import pages.*;
 import steps.api.ProjectAPIStep;
 import steps.ui.DashboardStep;
 import steps.ui.LoginStep;
@@ -34,6 +31,8 @@ public class BaseTest {
 
     protected static LoginStep loginStep;
     protected static LoginPage loginPage;
+    protected static MilestonePage milestonePage;
+    protected static AddMilestonePage addMilestonePage;
     protected static ProjectPage projectPage;
     protected static TestCaseStep testCaseStep;
     protected static TestCasePage testCasePage;
@@ -77,6 +76,8 @@ public class BaseTest {
         );
         loginStep = new LoginStep();
         loginPage = new LoginPage();
+        milestonePage = new MilestonePage();
+        addMilestonePage = new AddMilestonePage();
         projectPage = new ProjectPage();
         dashboardStep = new DashboardStep();
         dashboardPage = new DashboardPage();
